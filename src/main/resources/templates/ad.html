@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>My Craft Store</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" />
+</head>
+<body>
+
+	<div class="container"
+		th:style="|margin-top: 15px; margin-bottom: 15 px;|">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-muted"
+				th:style="| position: absolute; right: 6.5%; padding: 5px;|" />
+		</form>
+
+
+		<h3 th:inline="text">Welcome,
+			[[${#httpServletRequest.remoteUser}]] !</h3>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light"
+			th:style="|margin-top: 15px;|">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/products}">Products <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Ads</a></li>
+				</ul>
+
+
+
+			</div>
+		</nav>
+
+
+		<h4 th:inline="text" th:style="| margin-top: 40px;|">List of ads</h4>
+
+		<table class="table table-striped">
+			<thead>
+
+				<tr th:each="ad: ${ads}">
+					<td th:text="${ad.title}"></td>
+					<td th:text="${ad.user.username}"></td>
+					<td th:text="${ad.description}"></td>
+
+
+					<td sec:authorize="hasAnyAuthority('ADMIN', 'GOLD')"><a
+						class="btn btn-sm btn-danger"
+						th:href="@{/deletead/{id}(id=${ad.id})}">Delete</a></td>
+				</tr>
+
+			</thead>
+		</table>
+		<a class="btn btn-sm btn-success" th:href="@{/addad}"
+			sec:authorize="hasAuthority('GOLD')"
+			th:style="| margin-left: auto;  margin-right: 10px; width: 170px;|">Add
+			an add</a>
+	</div>
+</body>
+</html>

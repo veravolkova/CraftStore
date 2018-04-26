@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>My Craft Store</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+<body>
+
+	<div class="container"
+		th:style="|margin-top: 15px; margin-bottom: 15 px;|">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-muted"
+				th:style="| position: absolute; right: 6.5%; padding: 5px;|" />
+		</form>
+
+
+		<h3 th:inline="text">Welcome,
+			[[${#httpServletRequest.remoteUser}]] !</h3>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light"
+			th:style="|margin-top: 15px;|">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Products
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/ads}">Ads</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<h4 th:style="|margin-top: 40px|">List of products</h4>
+
+		<table class="table table-striped">
+			<thead>
+
+				<tr th:each="product: ${products}">
+					<td th:text="${product.title}"></td>
+					<td th:text="${product.user.username}"></td>
+					<td th:text="${product.description}"></td>
+					<td th:text="${product.price}"></td>
+					<td th:text="${product.category.name}"></td>
+
+
+					<td sec:authorize="hasAnyAuthority('ADMIN', 'GOLD', 'SILVER')"><a
+						class="btn btn-sm btn-success"
+						th:href="@{/update/{id}(id=${product.id})}">Update</a></td>
+					<td sec:authorize="hasAnyAuthority('ADMIN', 'GOLD', 'SILVER')"><a
+						class="btn btn-sm btn-danger"
+						th:href="@{/delete/{id}(id=${product.id})}">Delete</a></td>
+
+				</tr>
+
+			</thead>
+		</table>
+		<a class="btn btn-sm btn-success" th:href="@{/add}"
+			sec:authorize="hasAnyAuthority('GOLD', 'SILVER')"
+			th:style="| margin-left: auto;  margin-right: 10px; width: 170px;|">Add
+			product</a>
+
+	</div>
+</body>
+</html>

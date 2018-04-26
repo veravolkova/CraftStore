@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+</head>
+<body>	
+
+ <div class="container" th:style="|display: block; margin-top: 15px; margin-left: auto;  margin-right: auto;  width: 70%;  border: 3px solid green;|">
+
+    <h1>Add Advertisement</h1> 
+  
+ <form th:object="${ad}" th:action="@{savead}" action="#" method="post"> 
+ 
+   <label for="title">Title</label> 
+   <input class="form-control" type="text" id="title" th:field="*{title}" /> 
+   
+   <label for="user">Seller</label> 
+   <input class="form-control" type="text" name="user" id="user" th:value="4" readonly="readonly" /> 
+   
+   <label for="desc">Description</label> 
+   <input class="form-control" type="text" id="desc" th:field="*{description}"  th:style="|height: 100px;|"/>    
+        
+  
+   <input type="submit" value="Save" class="btn btn-sm btn-success" th:style="|margin-top: 40px; margin-bottom: 20px; width: 200px; height: 40px; |"></input>   
+    
+</form>
+
+  </div>	
+
+</body>
+</html>
+

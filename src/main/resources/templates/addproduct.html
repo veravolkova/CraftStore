@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+
+</head>
+<body>	
+  <div class="container" th:style="|display: block; margin-top: 15px; margin-left: auto;  margin-right: auto;  width: 70%;  border: 3px solid green;|">
+
+    <h1>Add Product</h1>  
+  
+ <form th:object="${product}" th:action="@{save}" action="#" method="post"> 
+ 
+   <label for="titl">Title</label> 
+   <input class="form-control" type="text" id="titl" th:field="*{title}" /> 
+   
+   <label for="user">User</label> 
+   <input class="form-control" type="text" name="user" id="user" th:value="${user}" readonly="readonly" />   
+   
+   <label for="description">Description</label> 
+   <input class="form-control" type="text" id="description" th:field="*{description}" />    
+   
+   <label for="price">Price</label> 
+   <input class="form-control" type="text" id="price" th:field="*{price}" />  
+   
+   <label for="catlist">Category</label>
+   <select id="catlist" th:field="*{category}" class="form-control">
+   <option th:each="category: ${categories}" 
+     th:value="${category.id}"
+     th:text="${category.name}"></option>
+   </select>  
+   
+  
+   <input type="submit" value="Save" class="btn btn-sm btn-success" th:style="|margin-top: 40px; margin-bottom: 20px; width: 200px; height: 40px; |"></input>   
+    
+</form>
+     </div>
+
+</body>
+</html>
+

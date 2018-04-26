@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+</head>
+<body>
+
+
+	<div class="container"
+		th:style="|display: block; margin-top: 15px; margin-left: auto;  margin-right: auto;  width: 40%;  border: 3px solid green;|">
+
+		<div th:if="${param.error}">Invalid username and password.</div>
+
+		<div
+			th:style="|margin-top: 15px; margin-bottom: 15px; margin-left: auto; margin-right: auto; |">
+
+			<h1>Welcome</h1>
+			<form th:action="@{/login}" method="post">
+				<div>
+					<label> Username : <input type="text" name="username"
+						class="form-control" />
+					</label>
+				</div>
+				<div>
+					<label> Password: <input type="password" name="password"
+						class="form-control" />
+					</label>
+				</div>
+				<div>
+					<input type="submit" value="Sign In" class="btn btn-sm btn-success"
+						th:style="|margin-top: 10px; width: 200px; height: 40px; |" />
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+
+</body>
+</html>
