@@ -10,8 +10,8 @@ The higher the tier of the subscription is - the mode ads and products a user ca
 There is also admin user who can delete ads and products. 
 
 <img src="https://drive.google.com/uc?export=view&id=1yv7N1-FQoJhr5SM-FP7q8E88q_Mpu0gt" alt="Craftstore Screenshot1" width="750" height="340">
-<img src="https://drive.google.com/uc?export=view&id=1UFqeAaskCH5rBF7N902NiPFRLmFnXzEw" alt="Craftstore Screenshot2" width="840" height="400">
-<img src="https://drive.google.com/uc?export=view&id=1B3UafPRwx9rNVTdu8LEuQDqtGAqMP6EX" alt="Craftstore Screenshot3" width="840" height="400">
+<img src="https://drive.google.com/uc?export=view&id=1UFqeAaskCH5rBF7N902NiPFRLmFnXzEw" alt="Craftstore Screenshot2" width="860" height="400">
+<img src="https://drive.google.com/uc?export=view&id=1B3UafPRwx9rNVTdu8LEuQDqtGAqMP6EX" alt="Craftstore Screenshot3" width="860" height="400">
 <img src="https://drive.google.com/uc?export=view&id=1aAEDHKrSA3VtesbSha_o9sJqoBt5Nu4j" alt="Craftstore Screenshot4" width="750" height="340">
 
 ## Technologies/ functionality
